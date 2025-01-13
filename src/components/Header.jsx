@@ -22,6 +22,12 @@ export default function Header(){
                         )}
                     </div>
 
+                    <div>
+                        <button>
+                            <NavLink to='/dashboard' className={({ isActive, isPending }) => `${isActive ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-700 hover:text-white'} rounded-md px-3 py-2 text-sm font-medium transition duration-200 ring-1 ring-gray-400`}>  User account </NavLink>
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </header>
