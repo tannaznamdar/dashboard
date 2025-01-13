@@ -7,9 +7,22 @@ import ProjectsItem from "../../pages/dashboard-pages/ProjectsItem";
 import CalendarItem from "../../pages/dashboard-pages/CalendarItem";
 import DocumentsItem from "../../pages/dashboard-pages/DocumentsItem";
 import ReportsItem from "../../pages/dashboard-pages/ReportsItem";
+import AboutPage from "../../pages/AboutPage";
+import ToDoesPage from "../../pages/ToDoesPage";
 
 const router = createBrowserRouter([
-
+  {
+    path: "/",
+    element: <HomePage />
+  },
+  {
+    path: "/about",
+    element: <AboutPage />
+  },
+  {
+    path: "/todos",
+    element: <ToDoesPage />
+  },
   {
     path: "/dashboard",
     element: <Panel />,
