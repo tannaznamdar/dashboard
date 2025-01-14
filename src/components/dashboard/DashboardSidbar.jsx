@@ -1,16 +1,17 @@
 import propTypes from 'prop-types'
+import { useState } from "react";
 
 import logo from "./../../assets/image/Tailwind CSS.png";
 import { XMarkIcon, HomeIcon, UsersIcon, FolderIcon, CalendarIcon, ClipboardDocumentListIcon, ChartPieIcon } from "@heroicons/react/24/outline";
 import MenuList from "./dashboard-menu/MenuList";
 
- function Sidbar({ mobileMenu, closeMenu}) {
+ function Sidbar() {
 
   let menuItems = [
     { id: 1, 
         title: "Dashboard", 
         icon: <HomeIcon />, 
-        href: "/", 
+        href: "/dashboard/panel", 
         current: true },
     {
       id: 2,
@@ -48,6 +49,19 @@ import MenuList from "./dashboard-menu/MenuList";
       current: false,
     },
   ];
+
+  const [mobileMenu, setMobileMenu] = useState(false);
+  
+    //mobile mood
+    const openMenu = () => {
+      setMobileMenu(true);
+      document.body.style.overflow = "hidden";
+    };
+  
+    const closeMenu = () => {
+      setMobileMenu(false);
+      document.body.style.overflow = "auto";
+    };
   
   return (
     <>

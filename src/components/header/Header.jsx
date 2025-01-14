@@ -1,7 +1,7 @@
 import { NavLink } from "react-router"
 import { Bars4Icon} from "@heroicons/react/24/outline";
 import { useState } from "react";
-import HeaderMenuItem from "./header-menu/HeaderMenuItem";
+import MenuItem from "./header-menu/MenuItem";
 import MobileMenu from "./header-menu/MobileMenu";
 
 export default function Header(){
@@ -28,10 +28,10 @@ export default function Header(){
                 <div className="flex justify-between w-full items-center py-4">
 
                     {/* Desktop Navigation */}
-                      <HeaderMenuItem  navigation={navigation}/>
+                      <MenuItem  navigation={navigation}/>
 
                       <button>
-                          <NavLink to='/dashboard' className={({ isActive, isPending }) => `${isActive ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-700 hover:text-white'} rounded-md px-3 py-2 text-sm font-medium transition duration-200 ring-1 ring-gray-400`}>  User account </NavLink>
+                          <NavLink to='/dashboard/panel' className={({ isActive, isPending }) => `${isActive ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-700 hover:text-white'} rounded-md px-3 py-2 text-sm font-medium transition duration-200 ring-1 ring-gray-400`}>  User account </NavLink>
                       </button>
 
                     {/* mobile menu */}

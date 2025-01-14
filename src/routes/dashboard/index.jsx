@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     element: <ToDoesPage />
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/panel",
     element: <Panel />,
   },
   {
