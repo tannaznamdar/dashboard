@@ -5,7 +5,7 @@ import { ArrowRightStartOnRectangleIcon, BellAlertIcon, MagnifyingGlassIcon, Bar
 import userImg from "./../../assets/image/user.png";
 import { NavLink } from "react-router";
 
-function DashboardNavbar() {
+function DashboardNavbar({ openMenu }) {
     
   useEffect(() => {
     document.documentElement.classList.toggle(
