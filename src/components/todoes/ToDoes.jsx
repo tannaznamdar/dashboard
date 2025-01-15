@@ -27,6 +27,16 @@ export default function ToDoes(){
         setToDoes(newTodoes)
     }
 
+    const editTodoHandler =(newTodoTitle, todo)=>{
+     let newTodoes = toDoes.map((item)=>{
+        if(item.id === todo.id){
+            todo.title = newTodoTitle
+        }
+        return item;
+     })
+     setToDoes(newTodoes)
+    }
+
     return(
 
         <div className="flex items-center justify-center py-16">
@@ -37,7 +47,7 @@ export default function ToDoes(){
                 </div>
 
                 <NewTodoInput toDoes={toDoes} setToDoes={setToDoes} />
-                <ToDoList toDoes={toDoes} deleteTodo ={deleteTodoHandler} toggleStatus={toggleTodoStatusHandler} />
+                <ToDoList toDoes={toDoes} editTodo ={editTodoHandler} deleteTodo ={deleteTodoHandler} toggleStatus={toggleTodoStatusHandler} />
             </div>
         </div>
     )

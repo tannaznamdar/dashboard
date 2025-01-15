@@ -5,7 +5,7 @@ import DeleteIcon from "./../icons/DeleteIcon";
 import EditIcon from "./../icons/EditIcon";
 import EditMode from "./EditMode";
 
-export default function ToDoListItem({ todo, deleteTodo, toggleStatus }) {
+export default function ToDoListItem({ todo, deleteTodo, toggleStatus, editTodo }) {
   const [editMode, setEditMode] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export default function ToDoListItem({ todo, deleteTodo, toggleStatus }) {
         {editMode 
         ? (
             <div className="flex justify-between items-center w-full">
-              <EditMode todo={todo} />
+              <EditMode todo={todo} editTodo={editTodo} setEditMode={setEditMode} />
               <XMarkIcon className="size-5 text-red-800"
               onClick={()=>setEditMode(false)} />
             </div>
