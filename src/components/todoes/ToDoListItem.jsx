@@ -1,11 +1,11 @@
 import DeleteIcon from "./../icons/DeleteIcon";
 import EditIcon from "./../icons/EditIcon";
 
-export default function ToDoListItem({todo, deleteTodo}) {
+export default function ToDoListItem({todo, deleteTodo, toggleStatus}) {
   return (
     <li className="relative flex items-center justify-between px-2 py-6 border-b">
       <div>
-        <input type="checkbox" checked={todo?.status ? true : false} onChange={()=>console.log('cheked')} />
+        <input type="checkbox" checked={todo?.status ? true : false} onChange={()=>toggleStatus(todo)} />
         <p
           className={`inline-block mt-1 ml-2 cursor-pointer  ${
             todo?.status ? "line-through text-gray-400" : "text-gray-700"

@@ -17,6 +17,16 @@ export default function ToDoes(){
         setToDoes(newTodoes)
     }
 
+    const toggleTodoStatusHandler =(todo)=>{
+        let newTodoes = toDoes.map ((item)=>{
+            if (item.id === todo.id){
+                item.status =! item.status
+            }
+            return item
+        })
+        setToDoes(newTodoes)
+    }
+
     return(
 
         <div className="flex items-center justify-center py-16">
@@ -27,7 +37,7 @@ export default function ToDoes(){
                 </div>
 
                 <NewTodoInput toDoes={toDoes} setToDoes={setToDoes} />
-                <ToDoList toDoes={toDoes} deleteTodo ={deleteTodoHandler} />
+                <ToDoList toDoes={toDoes} deleteTodo ={deleteTodoHandler} toggleStatus={toggleTodoStatusHandler} />
             </div>
         </div>
     )
