@@ -1,14 +1,15 @@
 import { useState } from "react";
 import NewTodoInput from "./NewTodoInput";
 import ToDoList from "./ToDoList";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function ToDoes(){
 
     const [toDoes, setToDoes] = useState ([
-        {id:1 , title: 'go to school', status : false},
-        {id:2 , title: 'go to game', status : true}
+        {id:uuidv4() , title: 'go to school', status : false},
+        {id:uuidv4() , title: 'go to game', status : true}
     ]) 
-    
+
     return(
 
         <div className="flex items-center justify-center py-16">
@@ -18,7 +19,7 @@ export default function ToDoes(){
                     <h1 className="mr-6 text-4xl font-bold text-purple-600"> TO DO APP </h1>
                 </div>
 
-                <NewTodoInput />
+                <NewTodoInput toDoes={toDoes} setToDoes={setToDoes} />
                 <ToDoList toDoes={toDoes} />
             </div>
         </div>
