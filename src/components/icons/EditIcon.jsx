@@ -1,0 +1,10 @@
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
+
+export default function EditIcon() {
+
+    return (
+
+        <PencilSquareIcon className="size-5 text-blue-900 cursor-pointer" />
+        
+    )
+}
