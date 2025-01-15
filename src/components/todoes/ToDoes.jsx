@@ -10,6 +10,13 @@ export default function ToDoes(){
         {id:uuidv4() , title: 'go to game', status : true}
     ]) 
 
+    const deleteTodoHandler =(todo)=>{
+        let newTodoes = toDoes.filter((item)=>{
+            return todo.id != item.id ;
+        })
+        setToDoes(newTodoes)
+    }
+
     return(
 
         <div className="flex items-center justify-center py-16">
@@ -20,7 +27,7 @@ export default function ToDoes(){
                 </div>
 
                 <NewTodoInput toDoes={toDoes} setToDoes={setToDoes} />
-                <ToDoList toDoes={toDoes} />
+                <ToDoList toDoes={toDoes} deleteTodo ={deleteTodoHandler} />
             </div>
         </div>
     )

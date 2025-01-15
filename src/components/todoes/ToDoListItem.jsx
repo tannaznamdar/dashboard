@@ -1,7 +1,7 @@
 import DeleteIcon from "./../icons/DeleteIcon";
 import EditIcon from "./../icons/EditIcon";
 
-export default function ToDoListItem({todo}) {
+export default function ToDoListItem({todo, deleteTodo}) {
   return (
     <li className="relative flex items-center justify-between px-2 py-6 border-b">
       <div>
@@ -18,7 +18,7 @@ export default function ToDoListItem({todo}) {
       <div
         type="button"
         className="absolute right-0 flex items-center space-x-4">
-        <DeleteIcon />
+        <DeleteIcon onClick={()=>deleteTodo(todo)} />
         <EditIcon />
       </div>
     </li>
