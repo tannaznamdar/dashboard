@@ -1,3 +1,5 @@
+import NewTodoInput from "./NewTodoInput";
+
 export default function ToDoes(){
     return(
 
@@ -7,7 +9,8 @@ export default function ToDoes(){
                 <div className="flex items-center mb-6">
                     <h1 className="mr-6 text-4xl font-bold text-purple-600"> TO DO APP </h1>
                 </div>
-
+                
+                <NewTodoInput />
             </div>
         </div>
     )
