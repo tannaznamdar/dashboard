@@ -12,6 +12,7 @@ export default function ToDoes() {
         "https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new"
       );
       setToDoes(res.data);
+      
     } catch (error) {
       console.error("Error fetching todos:", error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
@@ -32,6 +33,7 @@ export default function ToDoes() {
       });
 
       setToDoes(newTodoes);
+
     } catch (error) {
       console.error(error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
@@ -53,20 +55,33 @@ export default function ToDoes() {
       });
 
       setToDoes(newTodoes);
+
     } catch (error) {
       console.error(error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
     }
   };
 
-  const editTodoHandler = (newTodoTitle, todo) => {
-    let newTodoes = toDoes.map((item) => {
-      if (item.id === todo.id) {
-        todo.title = newTodoTitle;
-      }
-      return item;
-    });
-    setToDoes(newTodoes);
+  const editTodoHandler = async (newTodoTitle, todo) => {
+    try {
+      let res = await axios.put(
+        `https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new/${todo.id}`,
+        { title: newTodoTitle }
+      );
+
+      let newTodoes = toDoes.map((item) => {
+        if (item.id === todo.id) {
+          todo.title = newTodoTitle;
+        }
+        return item;
+      });
+
+      setToDoes(newTodoes);
+
+    } catch (error) {
+      console.error(error);
+      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+    }
   };
 
   return (
