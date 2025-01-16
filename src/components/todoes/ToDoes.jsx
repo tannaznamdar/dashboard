@@ -16,7 +16,7 @@ export default function ToDoes() {
 
     } catch (error) {
       console.error("Error fetching todos:", error);
-      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+      toast.error(error.message || "an error occurred")
     }
   };
 
@@ -60,7 +60,7 @@ export default function ToDoes() {
 
     } catch (error) {
       console.error(error);
-      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+      toast.error(error.message || "an error occurred")
     }
   };
 
