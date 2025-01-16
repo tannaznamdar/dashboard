@@ -30,23 +30,33 @@ export default function ToDoes() {
       let newTodoes = toDoes.filter((item) => {
         return todo.id != item.id;
       });
-      
-        setToDoes(newTodoes);
 
+      setToDoes(newTodoes);
     } catch (error) {
       console.error(error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
     }
   };
 
-  const toggleTodoStatusHandler = (todo) => {
-    let newTodoes = toDoes.map((item) => {
-      if (item.id === todo.id) {
-        item.status = !item.status;
-      }
-      return item;
-    });
-    setToDoes(newTodoes);
+  const toggleTodoStatusHandler = async (todo) => {
+    try {
+      let res = await axios.put(
+        `https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new/${todo.id}`,
+        { status: !todo.status }
+      );
+
+      let newTodoes = toDoes.map((item) => {
+        if (item.id === todo.id) {
+          item.status = !item.status;
+        }
+        return item;
+      });
+
+      setToDoes(newTodoes);
+    } catch (error) {
+      console.error(error);
+      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+    }
   };
 
   const editTodoHandler = (newTodoTitle, todo) => {
