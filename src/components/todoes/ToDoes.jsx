@@ -13,20 +13,30 @@ export default function ToDoes() {
       );
       setToDoes(res.data);
     } catch (error) {
-      console.error('Error fetching todos:', error);
+      console.error("Error fetching todos:", error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
     }
   };
 
-  useEffect(()=>{
-    getTodoes()
-  },[])
+  useEffect(() => {
+    getTodoes();
+  }, []);
 
-  const deleteTodoHandler = (todo) => {
-    let newTodoes = toDoes.filter((item) => {
-      return todo.id != item.id;
-    });
-    setToDoes(newTodoes);
+  const deleteTodoHandler = async (todo) => {
+    try {
+      const res = await axios.delete(
+        `https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new/${todo.id}`
+      );
+      let newTodoes = toDoes.filter((item) => {
+        return todo.id != item.id;
+      });
+      
+        setToDoes(newTodoes);
+
+    } catch (error) {
+      console.error(error);
+      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+    }
   };
 
   const toggleTodoStatusHandler = (todo) => {
