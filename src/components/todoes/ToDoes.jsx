@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import NewTodoInput from "./NewTodoInput";
 import ToDoList from "./ToDoList";
 
@@ -12,7 +13,7 @@ export default function ToDoes() {
         "https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new"
       );
       setToDoes(res.data);
-      
+
     } catch (error) {
       console.error("Error fetching todos:", error);
       alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
@@ -33,10 +34,11 @@ export default function ToDoes() {
       });
 
       setToDoes(newTodoes);
+      toast.success('todo deleted :)')
 
     } catch (error) {
       console.error(error);
-      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+      toast.error(error.message || "an error occurred")
     }
   };
 
@@ -77,10 +79,11 @@ export default function ToDoes() {
       });
 
       setToDoes(newTodoes);
+      toast.success('todo edited :)')
 
     } catch (error) {
       console.error(error);
-      alert("مشکلی در ذخیره‌سازی تسک به وجود آمد.");
+      toast.error(error.message || "an error occurred")
     }
   };
 

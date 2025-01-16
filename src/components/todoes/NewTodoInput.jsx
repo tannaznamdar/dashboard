@@ -1,5 +1,6 @@
 import axios from "axios";
 import UseFormInput from "../../hooks/UseFormInput";
+import { toast } from "react-toastify";
 
 export default function NewTodoInput({ toDoes, setToDoes }) {
   const newTodo = UseFormInput("");
@@ -15,12 +16,12 @@ export default function NewTodoInput({ toDoes, setToDoes }) {
         );
 
         setToDoes([...toDoes, { id: res.data.id, ...newTodoValue }]);
-
+        toast.success('todo created :)')
         newTodo.reset();
         
       } catch (error) {
         console.error('Error saving todo:', error);
-        alert('مشکلی در ذخیره‌سازی تسک به وجود آمد.');
+        toast.error(error.message || "an error occurred")
       }
     }
   };
