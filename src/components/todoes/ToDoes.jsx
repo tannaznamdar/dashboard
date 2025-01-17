@@ -90,14 +90,11 @@ export default function ToDoes() {
         { title: newTodoTitle }
       );
 
-      let newTodoes = toDoes.map((item) => {
-        if (item.id === todo.id) {
-          todo.title = newTodoTitle;
-        }
-        return item;
-      });
-
-      // setToDoes(newTodoes);
+      todoDispatcher({
+        type: "edit-title",
+        id: res.data.id,
+        newTitle: newTodoTitle,
+      })
       toast.success("todo edited :)");
     } catch (error) {
       console.error(error);

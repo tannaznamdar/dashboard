@@ -15,14 +15,23 @@ export default function TodosReducer(toDoes, action) {
       });
       return newTodoes;
 
-      case "toggle-status":
-        let newList = toDoes.map((item) => {
-                if (item.id === action.id) {
-                  item.status = !item.status;
-                }
-                return item;
-              });
-              return newList;
+    case "toggle-status":
+      let newList = toDoes.map((item) => {
+        if (item.id === action.id) {
+          item.status = !item.status;
+        }
+        return item;
+      });
+      return newList;
+
+    case "edit-title":
+      let newTodoeslist = toDoes.map((item) => {
+        if (item.id === action.id) {
+          item.title = action?.newTitle;
+        }
+        return item;
+      });
+      return newTodoeslist;
 
     default:
       return toDoes;
