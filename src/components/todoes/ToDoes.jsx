@@ -73,14 +73,10 @@ export default function ToDoes() {
         { status: !todo.status }
       );
 
-      let newTodoes = toDoes.map((item) => {
-        if (item.id === todo.id) {
-          item.status = !item.status;
-        }
-        return item;
-      });
-
-      // setToDoes(newTodoes);
+      todoDispatcher({
+        type: "toggle-status",
+        id: res.data.id,
+      })
     } catch (error) {
       console.error(error);
       toast.error(error.message || "an error occurred");
