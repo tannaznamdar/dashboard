@@ -1,28 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import NewTodoInput from "./NewTodoInput";
 import ToDoList from "./ToDoList";
+import TodosReducer from "../../reducers/TodosReducer";
 
 export default function ToDoes() {
-  const [toDoes, setToDoes] = useState([]);
+  const [toDoes, todoDispatcher] = useReducer(TodosReducer, []);
 
   const getTodoes = async () => {
     try {
       const res = await axios.get(
         "https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new"
       );
-      setToDoes(res.data);
+
+      todoDispatcher({
+        type: "initial-toDoes",
+        toDoes: res.data,
+      });
 
     } catch (error) {
       console.error("Error fetching todos:", error);
-      toast.error(error.message || "an error occurred")
+      toast.error(error.message || "an error occurred");
     }
   };
 
   useEffect(() => {
     getTodoes();
   }, []);
+
+  const addTodoHandler = async (newTodoValue) => {
+    try {
+      const res = await axios.post(
+        "https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new",
+        newTodoValue
+      );
+
+      todoDispatcher({
+        type: "add",
+        id: res.data.id,
+        title: newTodoValue.title,
+      });
+
+      toast.success("todo created :)");
+    } catch (error) {
+      console.error("Error saving todo:", error);
+      toast.error(error.message || "an error occurred");
+    }
+  };
 
   const deleteTodoHandler = async (todo) => {
     try {
@@ -33,12 +58,11 @@ export default function ToDoes() {
         return todo.id != item.id;
       });
 
-      setToDoes(newTodoes);
-      toast.success('todo deleted :)')
-
+      // setToDoes(newTodoes);
+      toast.success("todo deleted :)");
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "an error occurred")
+      toast.error(error.message || "an error occurred");
     }
   };
 
@@ -56,11 +80,10 @@ export default function ToDoes() {
         return item;
       });
 
-      setToDoes(newTodoes);
-
+      // setToDoes(newTodoes);
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "an error occurred")
+      toast.error(error.message || "an error occurred");
     }
   };
 
@@ -78,12 +101,11 @@ export default function ToDoes() {
         return item;
       });
 
-      setToDoes(newTodoes);
-      toast.success('todo edited :)')
-
+      // setToDoes(newTodoes);
+      toast.success("todo edited :)");
     } catch (error) {
       console.error(error);
-      toast.error(error.message || "an error occurred")
+      toast.error(error.message || "an error occurred");
     }
   };
 
@@ -94,7 +116,7 @@ export default function ToDoes() {
           <h1 className="mr-6 text-4xl font-bold text-purple-600">TO DO APP</h1>
         </div>
 
-        <NewTodoInput toDoes={toDoes} setToDoes={setToDoes} />
+        <NewTodoInput addTodo={addTodoHandler} />
         <ToDoList
           toDoes={toDoes}
           editTodo={editTodoHandler}
