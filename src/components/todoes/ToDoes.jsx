@@ -54,11 +54,11 @@ export default function ToDoes() {
       const res = await axios.delete(
         `https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new/${todo.id}`
       );
-      let newTodoes = toDoes.filter((item) => {
-        return todo.id != item.id;
-      });
 
-      // setToDoes(newTodoes);
+      todoDispatcher({
+        type: "delete",
+        id: res.data.id
+      })
       toast.success("todo deleted :)");
     } catch (error) {
       console.error(error);
