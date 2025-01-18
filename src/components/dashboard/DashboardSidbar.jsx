@@ -1,11 +1,11 @@
-import propTypes from 'prop-types'
 import { useState } from "react";
 
 import logo from "./../../assets/image/Tailwind CSS.png";
 import { XMarkIcon, HomeIcon, UsersIcon, FolderIcon, CalendarIcon, ClipboardDocumentListIcon, ChartPieIcon } from "@heroicons/react/24/outline";
+
 import MenuList from "./dashboard-menu/MenuList";
 
- function Sidbar() {
+export default function Sidbar() {
 
   let menuItems = [
     { id: 1, 
@@ -93,9 +93,3 @@ import MenuList from "./dashboard-menu/MenuList";
   );
 }
 
-Sidbar.propTypes ={
-     closeMenu: propTypes.func,
-     mobileMenu:propTypes.func,
-  }
-
-export default Sidbar;

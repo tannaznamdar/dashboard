@@ -21,8 +21,8 @@ function HeaderMenuItem({navigation}) {
   );
 }
 
-MobileMenu.propTypes ={
-  navigation: propTypes.array,
+HeaderMenuItem.propTypes ={
+  navigation: propTypes.array.isRequired,
   }
 
   export default HeaderMenuItem;

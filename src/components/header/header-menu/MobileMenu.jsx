@@ -43,6 +43,10 @@ function MobileMenu({mobileMenu, closeMobileMenu, navigation}){
   );
 }
 
-import propTypes from 'prop-types'
+
+MobileMenu.propTypes ={
+  navigation: propTypes.array.isRequired,
+  closeMobileMenu:propTypes.func
+  }
 
 export default MobileMenu;

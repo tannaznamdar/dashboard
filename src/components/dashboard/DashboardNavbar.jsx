@@ -1,9 +1,10 @@
 import propTypes from "prop-types";
 import { useEffect } from "react";
+import { NavLink } from "react-router";
 
 import { ArrowRightStartOnRectangleIcon, BellAlertIcon, MagnifyingGlassIcon, Bars3Icon, MoonIcon } from "@heroicons/react/24/outline";
 import userImg from "./../../assets/image/user.png";
-import { NavLink } from "react-router";
+
 
 function DashboardNavbar({ openMenu }) {
     
@@ -75,7 +76,7 @@ function DashboardNavbar({ openMenu }) {
 }
 
 DashboardNavbar.propTypes = {
-  // openMenu: propTypes.function
+  openMenu: propTypes.func
 };
 
 export default DashboardNavbar;
