@@ -29,26 +29,6 @@ export default function ToDoes() {
     getTodoes();
   }, []);
 
-  const addTodoHandler = async (newTodoValue) => {
-    try {
-      const res = await axios.post(
-        "https://675bf8c89ce247eb19380ed6.mockapi.io/todoes-new",
-        newTodoValue
-      );
-
-      todoDispatcher({
-        type: "add",
-        id: res.data.id,
-        title: newTodoValue.title,
-      });
-
-      toast.success("todo created :)");
-    } catch (error) {
-      console.error("Error saving todo:", error);
-      toast.error(error.message || "an error occurred");
-    }
-  };
-
   return (
     <div className="flex items-center justify-center py-16">
       <div className="w-full px-4 py-8 mx-auto shadow lg:w-2/3  max-h-screen overflow-auto bg-white">
@@ -56,7 +36,7 @@ export default function ToDoes() {
           <h1 className="mr-6 text-4xl font-bold text-purple-600">TO DO APP</h1>
         </div>
 
-        <NewTodoInput addTodo={addTodoHandler} />
+        <NewTodoInput todoDispatcher={todoDispatcher} />
 
         <todoContext.Provider value={{toDoes,todoDispatcher}}>
           <ToDoList />
