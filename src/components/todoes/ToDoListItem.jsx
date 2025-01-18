@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { todoContext } from "../../context/TodoContext";
 import propTypes from 'prop-types'
@@ -69,6 +69,18 @@ function ToDoListItem({ todo }) {
     }
   };
 
+  const editRef = useRef(null)
+
+  useEffect(() => {
+    if (editMode) {
+      editRef.current.focus();
+    }
+  }, [editMode]);
+
+  const clickEditIconHandler = ()=>{
+    setEditMode(true)
+  }
+
   return (
     <>
       <li className="relative flex items-center justify-between px-2 py-6 border-b">
@@ -76,7 +88,7 @@ function ToDoListItem({ todo }) {
         {editMode 
         ? (
             <div className="flex justify-between items-center w-full">
-              <EditMode todo={todo} editTodo={editTodoHandler} setEditMode={setEditMode} />
+              <EditMode todo={todo} editTodo={editTodoHandler} setEditMode={setEditMode} editRef={editRef} />
               <XMarkIcon className="size-5 text-red-800"
               onClick={()=>setEditMode(false)} />
             </div>
@@ -104,7 +116,7 @@ function ToDoListItem({ todo }) {
                 className="absolute right-0 flex items-center space-x-4"
               >
                 <DeleteIcon onClick={() => deleteTodoHandler(todo)} />
-                <EditIcon onClick={()=> setEditMode(true)} />
+                <EditIcon onClick={clickEditIconHandler} />
               </div>
             </div>
           ) 
