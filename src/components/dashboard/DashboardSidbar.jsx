@@ -94,8 +94,8 @@ import MenuList from "./dashboard-menu/MenuList";
 }
 
 Sidbar.propTypes ={
-    //  closeMenu: propTypes.function,
-    //  mobileMenu:propTypes.function,
+     closeMenu: propTypes.func,
+     mobileMenu:propTypes.func,
   }
 
 export default Sidbar;

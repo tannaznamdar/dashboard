@@ -1,12 +1,17 @@
 import { useEffect, useReducer } from "react";
 import axios from "axios";
+import { todoContext } from "../../context/TodoContext";
+import TodosReducer from "../../reducers/TodosReducer";
+
 import { toast } from "react-toastify";
+
 import NewTodoInput from "./NewTodoInput";
 import ToDoList from "./ToDoList";
-import TodosReducer from "../../reducers/TodosReducer";
-import { todoContext } from "../../context/TodoContext";
+
+
 
 export default function ToDoes() {
+
   const [toDoes, todoDispatcher] = useReducer(TodosReducer, []);
 
   const getTodoes = async () => {

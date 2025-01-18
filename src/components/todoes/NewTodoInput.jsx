@@ -1,9 +1,14 @@
-import UseFormInput from "../../hooks/UseFormInput";
 import axios from "axios";
+import propTypes from 'prop-types'
+
 import { toast } from "react-toastify";
 
+import UseFormInput from "../../hooks/UseFormInput";
 
-export default function NewTodoInput({todoDispatcher}) {
+
+
+function NewTodoInput({todoDispatcher}) {
+  
   const newTodo = UseFormInput("");
 
   const addTodoHandler = async (event) => {
@@ -43,3 +48,9 @@ export default function NewTodoInput({todoDispatcher}) {
     </div>
   );
 }
+
+NewTodoInput.propTypes ={
+  todoDispatcher: propTypes.func
+}
+
+export default  NewTodoInput;

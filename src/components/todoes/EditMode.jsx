@@ -1,5 +1,6 @@
+import propTypes from 'prop-types'
 
-export default function EditMode({ todo, editTodo, setEditMode }) {
+function EditMode({ todo, editTodo, setEditMode }) {
 
   const saveNewTodo = (event) => {
     if (event.key === "Enter" && event.target.value != "") {
@@ -20,3 +21,11 @@ export default function EditMode({ todo, editTodo, setEditMode }) {
     </div>
   );
 }
+
+EditMode.propTypes ={
+  todo:propTypes.object,
+  editTodo:propTypes.func,
+  setEditMode: propTypes.func
+}
+
+export default  EditMode;

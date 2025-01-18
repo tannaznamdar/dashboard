@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { todoContext } from "../../context/TodoContext";
-import { toast } from "react-toastify";
+import propTypes from 'prop-types'
 
+import { toast } from "react-toastify";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import DeleteIcon from "./../icons/DeleteIcon";
@@ -10,7 +11,8 @@ import EditIcon from "./../icons/EditIcon";
 import EditMode from "./EditMode";
 
 
-export default function ToDoListItem({ todo }) {
+function ToDoListItem({ todo }) {
+
   const [editMode, setEditMode] = useState(false);
   const {todoDispatcher} = useContext (todoContext)
 
@@ -111,3 +113,9 @@ export default function ToDoListItem({ todo }) {
     </>
   );
 }
+
+ToDoListItem.propTypes ={
+  todo: propTypes.object
+}
+
+export default ToDoListItem;
