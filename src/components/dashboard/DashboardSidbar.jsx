@@ -1,11 +1,11 @@
-import { useState } from "react";
+import propTypes from 'prop-types'
 
 import logo from "./../../assets/image/Tailwind CSS.png";
 import { XMarkIcon, HomeIcon, UsersIcon, FolderIcon, CalendarIcon, ClipboardDocumentListIcon, ChartPieIcon } from "@heroicons/react/24/outline";
 
 import MenuList from "./dashboard-menu/MenuList";
 
-export default function Sidbar() {
+function DashboardSidbar({closeMenu, mobileMenu}) {
 
   let menuItems = [
     { id: 1, 
@@ -49,19 +49,6 @@ export default function Sidbar() {
       current: false,
     },
   ];
-
-  const [mobileMenu, setMobileMenu] = useState(false);
-  
-    //mobile mood
-    const openMenu = () => {
-      setMobileMenu(true);
-      document.body.style.overflow = "hidden";
-    };
-  
-    const closeMenu = () => {
-      setMobileMenu(false);
-      document.body.style.overflow = "auto";
-    };
   
   return (
     <>
@@ -93,3 +80,8 @@ export default function Sidbar() {
   );
 }
 
+DashboardSidbar.propTypes ={
+  closeMenu: propTypes.func.isRequired
+}
+
+export default DashboardSidbar;
