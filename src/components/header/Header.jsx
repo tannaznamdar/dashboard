@@ -1,6 +1,8 @@
-import { NavLink } from "react-router"
-import { Bars4Icon} from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { NavLink } from "react-router"
+
+import { Bars4Icon} from "@heroicons/react/24/outline";
+
 import MenuItem from "./header-menu/MenuItem";
 import MobileMenu from "./header-menu/MobileMenu";
 

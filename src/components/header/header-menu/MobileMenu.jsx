@@ -1,8 +1,10 @@
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import propTypes from 'prop-types'
 import { NavLink } from "react-router";
 
-export default function MobileMenu({mobileMenu, closeMobileMenu, navigation,
-}) {
+import { XMarkIcon } from "@heroicons/react/24/outline";
+
+function MobileMenu({mobileMenu, closeMobileMenu, navigation}){
+
   return (
     <>
       {/* overlay */}
@@ -40,3 +42,7 @@ export default function MobileMenu({mobileMenu, closeMobileMenu, navigation,
 
   );
 }
+
+import propTypes from 'prop-types'
+
+export default MobileMenu;

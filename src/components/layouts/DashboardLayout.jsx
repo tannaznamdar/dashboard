@@ -1,10 +1,7 @@
 import Navbar from "../../components/dashboard/DashboardNavbar";
 import Sidbar from "../../components/dashboard/DashboardSidbar";
 
-
 export default function DashboardLayout({ children }) {
-
- 
 
   return (
     <>

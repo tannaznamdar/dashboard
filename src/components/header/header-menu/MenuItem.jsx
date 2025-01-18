@@ -1,6 +1,7 @@
 import { NavLink } from "react-router"
+import propTypes from 'prop-types'
 
-export default function HeaderMenuItem({navigation}) {
+function HeaderMenuItem({navigation}) {
   return (
 
     <div className="md:flex space-x-4 hidden">
@@ -19,3 +20,9 @@ export default function HeaderMenuItem({navigation}) {
     </div>
   );
 }
+
+MobileMenu.propTypes ={
+  navigation: propTypes.array,
+  }
+
+  export default HeaderMenuItem;
